@@ -1,0 +1,35 @@
+version: '2'
+services:
+  mysql:
+        image: mysql:latest
+        container_name: mysql_container
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: application
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+        ports:
+          - "3311:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
+        networks:
+          - my_network
+  php:
+    image: yiisoftware/yii2-php:7.4-apache
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    ports:
+      - '8000:80'
+    depends_on:
+      - mysql
+    networks:
+        - my_network
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
