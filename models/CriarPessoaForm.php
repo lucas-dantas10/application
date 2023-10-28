@@ -22,33 +22,8 @@ class CriarPessoaForm extends Model
     public function rules()
     {
         return [
-            ['nome', 'required'],
+            ['nome','required', 'message' => 'Nome não pode estar em branco'],
+            ['nome', 'string']
         ];
     }
-
-    /**
-     * Logs in a user using the provided username and password.
-     * @return bool whether the user is logged in successfully
-     */
-    public function login()
-    {
-        if ($this->validate()) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Finds user by [[username]]
-     *
-     * @return User|null
-     */
-    // public function getUser()
-    // {
-    //     if ($this->_user === false) {
-    //         $this->_user = User::findByUsername($this->username);
-    //     }
-
-    //     return $this->_user;
-    // }
 }
