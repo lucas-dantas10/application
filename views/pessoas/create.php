@@ -16,13 +16,4 @@ use yii\helpers\Html;
     </div>
 
     <?php ActiveForm::end(); ?>
-
-
-    <!-- <form>
-        <div class="mb-3">
-            <label for="name" class="form-label">Nome:</label>
-            <input type="email" class="form-control" id="name" aria-describedby="name">
-        </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form> -->
 </div>
