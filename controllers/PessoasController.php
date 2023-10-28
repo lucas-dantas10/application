@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\CriarPessoaForm;
+use app\models\EditarPessoaForm;
 use app\models\Pessoas;
 use Yii;
 use yii\web\Controller;
@@ -37,9 +38,24 @@ class PessoasController extends Controller
     public function actionView($id)
     {
         $people = Pessoas::findOne($id);
+        $model = new EditarPessoaForm();
         return $this->render('view', [
-            'people' => $people
+            'people' => $people,
+            'model' => $model
         ]);
+    }
+
+    public function actionUpdate()
+    {
+        $request = Yii::$app->request->post();
+
+        $people = Pessoas::findOne($request['id']);
+
+        $people->nome = $request['EditarPessoaForm']['nome'];
+
+        $people->update();
+
+        return $this->redirect('http://localhost:8000/index.php');
     }
 
     public function actionCreate()
