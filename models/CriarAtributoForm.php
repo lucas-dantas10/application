@@ -5,9 +5,10 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
-class CriarPessoaForm extends Model
+class CriarAtributoForm extends Model
 {
     public $nome;
+    public $pessoa;
 
 
     /**
@@ -17,7 +18,9 @@ class CriarPessoaForm extends Model
     {
         return [
             ['nome','required', 'message' => 'Nome não pode estar em branco'],
-            ['nome', 'string']
+            ['nome', 'string'],
+            ['pessoa', 'required', 'message' => 'Pessoa não pode estar em branco'],
+            ['pessoa', 'string']
         ];
     }
 }

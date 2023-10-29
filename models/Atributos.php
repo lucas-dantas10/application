@@ -26,19 +26,10 @@ class Atributos extends ActiveRecord
         return [
             [['nome', 'pessoa_id'], 'required'],
             ['nome', 'string', 'max' => 60],
-            [['pessoa_id' => 'integer']]
         ];
     }
 
-    // public function fields()
-    // {
-    //     return [
-    //         'nome'
-    //     ];
-    // }
-
-
-    public function getPessoa()
+    public function getPessoas()
     {
         return $this->hasOne(Pessoas::class, ['id' => 'pessoa_id']);
     }

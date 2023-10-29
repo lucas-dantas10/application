@@ -2,10 +2,10 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 
-class CriarPessoaForm extends Model
+
+class EditarAtributoForm extends Model
 {
     public $nome;
 
