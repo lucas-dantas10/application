@@ -40,7 +40,9 @@ class m231026_155603_atributos extends Migration
             'atributos',
             'pessoa_id',
             'pessoas',
-            'id'
+            'id',
+            'CASCADE',
+            'CASCADE'
         );
     }
 
