@@ -1,11 +1,10 @@
 <?php
 
-use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
 $this->registerJsFile(
-    '@web/js/actions.js',
+    '@web/js/atributos.js',
     ['depends' => [\yii\web\JqueryAsset::class]]
 );
 ?>
@@ -14,12 +13,12 @@ $this->registerJsFile(
 
     <div class="d-flex justify-content-between align-items-center">
         <div>
-            <h1>Pessoas</h1>
+            <h1>Atributos</h1>
         </div>
 
         <div>
-            <a href="http://localhost:8000/index.php?r=pessoas/create" class="btn btn-primary">
-                Add Pessoa
+            <a href="http://localhost:8000/index.php?r=atributos/create" class="btn btn-primary">
+                Add Atributo
             </a>
         </div>
     </div>
@@ -37,8 +36,8 @@ $this->registerJsFile(
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Pessoa</th>
                 <th scope="col">Atributos</th>
+                <th scope="col">Pessoa</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Deletar</th>
             </tr>
