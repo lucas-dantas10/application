@@ -17,10 +17,27 @@ class PessoasController extends Controller
         $query = Pessoas::find()
             ->joinWith('atributos');
 
+        $request = Yii::$app->request->get();
+
         $pagination = new Pagination([
             'defaultPageSize' => 5,
             'totalCount' => Pessoas::find()->count(),
         ]);
+
+        if (isset($request['search'])) {
+            $peoples = $query
+                ->where(['like', 'pessoas.nome', $request['search']])
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+
+            Yii::$app->response->format = Response::FORMAT_JSON;
+
+            return [
+                'peoples' => $peoples,
+                'pagination' => $pagination,
+            ];
+        }
 
         $peoples = $query->orderBy('nome')
             ->offset($pagination->offset)
