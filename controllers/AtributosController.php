@@ -6,7 +6,6 @@ use app\models\Atributos;
 use app\models\CriarAtributoForm;
 use app\models\EditarAtributoForm;
 use app\models\Pessoas;
-use Attribute;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
@@ -21,27 +20,16 @@ class AtributosController extends Controller
         
         $request = Yii::$app->request->get();
 
+        $search = $request['search'] ?? '';
+
         $pagination = new Pagination([
             'defaultPageSize' => 5,
             'totalCount' => Atributos::find()->count()
         ]);
 
-        if (isset($request['search'])) {
-            $attributes = $query
-                ->where(['like', 'atributos.nome', $request['search']])
-                ->offset($pagination->offset)
-                ->limit($pagination->limit)
-                ->all();
-
-            Yii::$app->response->format = Response::FORMAT_JSON;
-
-            return [
-                'attributes' => $attributes,
-                'pagination' => $pagination,
-            ];
-        }
-
-        $attributes = $query->orderBy('nome')
+        $attributes = $query
+            ->orderBy('pessoa_id')
+            ->where(['like', 'atributos.nome', $search])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
