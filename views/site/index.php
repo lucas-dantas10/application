@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
 $this->registerJsFile(
-    '@web/js/actions.js',
+    '@web/js/pessoas.js',
     ['depends' => [\yii\web\JqueryAsset::class]]
 );
 ?>
