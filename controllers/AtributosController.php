@@ -23,7 +23,7 @@ class AtributosController extends Controller
         $search = $request['search'] ?? '';
 
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 4,
             'totalCount' => Atributos::find()->count()
         ]);
 

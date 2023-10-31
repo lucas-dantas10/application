@@ -22,7 +22,7 @@ class PessoasController extends Controller
         $search = $request['search'] ?? '';
 
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 4,
             'totalCount' => Pessoas::find()->count(),
         ]);
 
